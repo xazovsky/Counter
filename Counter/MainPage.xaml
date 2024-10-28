@@ -1,0 +1,24 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Counter.MainPage">
+
+    <VerticalStackLayout Padding="20">
+        <Entry x:Name="CounterNameEntry" Placeholder="Wpisz nazwę licznika" />
+        <Entry x:Name="InitialValueEntry" Placeholder="Ustaw początkową wartość" Keyboard="Numeric" />
+        <Button Text="Dodaj licznik" Clicked="OnAddCounterClicked" />
+        <CollectionView x:Name="CounterList" ItemsLayout="VerticalList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Margin="10">
+                        <Label Text="{Binding Name}" FontSize="24"/>
+                        <Label Text="{Binding Value}" FontSize="32" HorizontalOptions="Center"/>
+                        <HorizontalStackLayout HorizontalOptions="Center">
+                            <Button Text="-" Clicked="OnMinusClicked" CommandParameter="{Binding}" />
+                            <Button Text="+" Clicked="OnPlusClicked" CommandParameter="{Binding}" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
